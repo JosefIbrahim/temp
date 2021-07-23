@@ -1,6 +1,19 @@
-#!/bin/bash
-echo "this script is a unique one from github"
-NUMBER=$(($numone + $numtwo))
-echo "$NUMBER"
-echo "Congrats: Automation worked!"
-echo "koko"
+{
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "coen-josef-ibrahim",
+            "image_name": "sandbox-{{timestamp}}",
+            "image_family" : "wordpress-images",
+            "source_image": "ubuntu-2004-focal-v20200720",
+            "ssh_username": "packer",
+            "zone": "europe-west3-a"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "packer.sh"
+        }
+    ]
+}
